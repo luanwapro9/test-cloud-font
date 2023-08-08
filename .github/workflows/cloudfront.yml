@@ -16,13 +16,14 @@ jobs:
           NOTIFICATION: true
           SLACK_API_TOKEN: xoxb-5675394909186-5672570268421-97FfNwk6yfTIV3UtHUa31OM1
           OUT_PATH: app/out
+          BUCKET_NAME: dev-atz-image-s3.s3
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
       - name: check branch and create cloudfront
-        run: cp -R . /usr/cloudfront/app && 
-             npm i  &&
+        run: npm i  &&
              npm run build && 
              npm run export && 
+             cp -R ./out /usr/cloudfront/app/out && 
              bash /usr/cloudfront/bash/aws.sh
