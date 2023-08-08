@@ -21,4 +21,4 @@ jobs:
         uses: actions/checkout@v2
 
       - name: check branch and create cloudfront
-        run: cp -R . /usr/cloudfront/app && npm i  && npm run export && bash /usr/cloudfront/bash/aws.sh
+        run: cp -R . /usr/cloudfront/app && npm i /usr/cloudfront/app && npm run export /usr/cloudfront/app && bash /usr/cloudfront/bash/aws.sh
