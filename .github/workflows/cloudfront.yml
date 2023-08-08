@@ -18,4 +18,5 @@ jobs:
           OUT_PATH: out
     steps:
       - name: check branch and create cloudfront
+        workingDir: /usr/cloudfront/
         run:  pwd && ls && npm i ./usr/cloudfront/ && npm run export /usr/cloudfront/ && bash /usr/cloudfront/bash/aws.sh
