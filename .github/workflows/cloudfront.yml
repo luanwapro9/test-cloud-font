@@ -16,7 +16,7 @@ jobs:
           NOTIFICATION: true
           SLACK_API_TOKEN: xoxb-5675394909186-5672570268421-97FfNwk6yfTIV3UtHUa31OM1
           OUT_PATH: app/out
-          BUCKET_NAME: dev-atz-image-s3.s3
+          BUCKET_NAME: dev-atz-image-s3
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
