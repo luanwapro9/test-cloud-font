@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  test_container:
+    image: luanwapro/cloudfront:latest
+    container_name: test_container
+    tty: true
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    environment:
+      -  CURRENT_BRANCH=refs/heads/cloudfront_test
+      -  BRANCH_NAME_CONTAINTS=cloudfront
+      -  SLACK_API_TOKEN=xoxb-5675394909186-5672570268421-97FfNwk6yfTIV3UtHUa31OM1
+      -  AWS_KEY=AKIAYBDQZYUC5ZT3WIEY
+      -  AWS_CLOUDFONT_S3=dev-atz-catalogue-image-s3.s3.ap-south-1.amazonaws.com
+      -  AWS_SECRET=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
+      -  AWS_CLOUDFONT_BRANCH=cloudfront
+      -  NOTIFICATION=true
+      -  OUTPUT_PATH= out

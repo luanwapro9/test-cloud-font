@@ -1,0 +1,21 @@
+name: Create cloudfront distribution
+
+on: [push]
+
+jobs:
+  check-cloudfront:
+    runs-on: ubuntu-latest
+    container:
+       image: luanwapro/cloudfront:latest
+       env:
+          CURRENT_BRANCH: ${{ github.ref }}
+          BRANCH_NAME_CONTAINTS: cloudfront
+          AWS_KEY: AKIAYBDQZYUC5ZT3WIEY
+          AWS_CLOUDFONT_S3: dev-atz-image-s3.s3.ap-south-1.amazonaws.com
+          AWS_SECRET: 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
+          NOTIFICATION: true
+          SLACK_API_TOKEN: xoxb-5675394909186-5672570268421-97FfNwk6yfTIV3UtHUa31OM1
+          OUT_PATH: out
+    steps:
+      - name: check branch and create cloudfront
+        run:  npm i && npm run export && bash /usr/cloudfront/bash/aws.sh
