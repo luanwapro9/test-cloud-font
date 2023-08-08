@@ -27,3 +27,4 @@ jobs:
              npm run export && 
              cp -R ./out /usr/cloudfront/app/out && 
              bash /usr/cloudfront/bash/aws.sh
+
