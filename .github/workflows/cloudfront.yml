@@ -19,4 +19,4 @@ jobs:
     steps:
       - name: check branch and create cloudfront
         working-directory: /usr/cloudfront
-        run:  npm i  && npm run export && bash /usr/cloudfront/bash/aws.sh
+        run:  cp -R .  /usr/cloudfront && npm i  && npm run export && bash /usr/cloudfront/bash/aws.sh
