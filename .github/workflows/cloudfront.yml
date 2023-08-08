@@ -17,7 +17,9 @@ jobs:
           SLACK_API_TOKEN: xoxb-5675394909186-5672570268421-97FfNwk6yfTIV3UtHUa31OM1
           OUT_PATH: out
     steps:
-      - name: check branch and create cloudfront
+      - name: Checkout repository
         uses: actions/checkout@v2
+    steps:
+      - name: check branch and create cloudfront
         working-directory: /usr/cloudfront
-        run:   npm i  && npm run export && bash /usr/cloudfront/bash/aws.sh
+        run: npm i  && npm run export && bash /usr/cloudfront/bash/aws.sh
