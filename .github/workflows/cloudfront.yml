@@ -18,5 +18,6 @@ jobs:
           OUT_PATH: out
     steps:
       - name: check branch and create cloudfront
+        uses: actions/checkout@v2
         working-directory: /usr/cloudfront
-        run:  cp -R .  /usr/cloudfront && npm i  && npm run export && bash /usr/cloudfront/bash/aws.sh
+        run:   npm i  && npm run export && bash /usr/cloudfront/bash/aws.sh
