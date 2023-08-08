@@ -19,9 +19,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        run: cp -R . /usr/cloudfront/app
+
       - name: check branch and create cloudfront
-        run: npm i  &&
-             npm run build  && 
-             npm run export  && 
+        run: cp -R . /usr/cloudfront/app && 
+             npm i  &&
+             npm run  && 
+             npm run  && 
              bash /usr/cloudfront/bash/aws.sh
