@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
        image: luanwapro/cloudfront:latest
+       workingDir: /usr/cloudfront/
        env:
           CURRENT_BRANCH: ${{ github.ref }}
           BRANCH_NAME_CONTAINTS: cloudfront
@@ -18,5 +19,4 @@ jobs:
           OUT_PATH: out
     steps:
       - name: check branch and create cloudfront
-        workingDir: /usr/cloudfront/
         run:  ls folder && npm i  && npm run export && bash /usr/cloudfront/bash/aws.sh
