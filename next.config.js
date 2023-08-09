@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  output: 'out',
+  assetPrefix:  process.env.DOMAIN || undefined ,
    images: {
     loader: 'akamai',
     path: '',
@@ -13,3 +13,4 @@ const nextConfig = {
 }
 
 module.exports = nextConfig
+

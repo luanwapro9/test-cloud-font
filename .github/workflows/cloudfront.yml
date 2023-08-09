@@ -14,7 +14,7 @@ jobs:
           AWS_CLOUDFONT_S3: dev-atz-image-s3.s3.ap-south-1.amazonaws.com
           AWS_SECRET: 3LamtwFJFuldnz+y5x8NQ43HaOyTfmTp8wAAkx/3
           NOTIFICATION: true
-          SLACK_API_TOKEN: xoxb-5675394909186-5672570268421-97FfNwk6yfTIV3UtHUa31OM1
+          SLACK_API_TOKEN: xoxb-5675394909186-5672570268421-dJCgzSYW94YsDiTz3JnK95Y2
           OUT_PATH: app/out
           BUCKET_NAME: dev-atz-catalogue-image-s3
     steps:
@@ -23,7 +23,7 @@ jobs:
 
       - name: check branch and create cloudfront
         run: npm i  &&
-             npm run build && 
-             npm run export && 
+             DOMAIN=https://dev-atz-catalogue-image-s3.s3.ap-south-1.amazonaws.com/${{ github.ref.name }} npm run export && 
              cp -R ./out /usr/cloudfront/app/out/ && 
              bash /usr/cloudfront/bash/aws.sh
+      
