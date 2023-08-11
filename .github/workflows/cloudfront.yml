@@ -21,9 +21,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Set output
+        id: vars
+        run: echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
+
+      - name: Check output
+        run: echo ${{ steps.vars.outputs.short_ref }}
+
       - name: check branch and create cloudfront
         run: npm i  &&
-             DOMAIN=https://dev-atz-catalogue-image-s3.s3.ap-south-1.amazonaws.com/${{ github.ref.name }} npm run export && 
+             DOMAIN=https://dev-atz-catalogue-image-s3.s3.ap-south-1.amazonaws.com/${{ steps.vars.outputs.short_ref }}
+             npm run export && 
              cp -R ./out /usr/cloudfront/app/out/ && 
              bash /usr/cloudfront/bash/aws.sh
       
